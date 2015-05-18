@@ -1,0 +1,27 @@
+{
+    "name": "openview/export-bundle",
+    "type": "symfony-bundle",
+    "title": "Export Bundle",
+    "description": "Openview Bundle to manage data exports.",
+    "version": "1.0.0",
+    "author": {
+        "name": "Openview",
+        "url": "http://www.openview.it"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/OPENVIEW-DEV/ExportBundle.git"
+    },        
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": ">=2.3.0",
+        "doctrine/mongodb-odm": "*",
+        "symfony/assetic-bundle": "*",
+        "friendsofsymfony/jsrouting-bundle": ">=1.0.0",
+        "jms/serializer-bundle": "*"
+    },
+    "autoload": {
+        "psr-0": { "Openview\\ExportBundle": "" }
+    },
+    "target-dir": "Openview/ExportBundle"
+}
