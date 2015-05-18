@@ -1,0 +1,20 @@
+index:
+    archive: Archivio esportazioni
+    cancelall: Annulla tutto
+    download: Scarica il file
+    finished: Esportazione terminata!
+    initializing: Inizializzazione in corso...
+    itemsprocessed: Elementi elaborati
+    job: Processo di esportazione
+    running: Esportazione in corso...
+    start: Avvia nuova esportazione
+    status: Status
+    title: Esportazione dati
+    field:
+        createdate: Data
+        username: Utente
+        items: Elementi
+        length: Durata
+        filename: File
+    msg:
+        cancelall: Annulla tutti i processi di esportazine in corso

@@ -1,0 +1,25 @@
+openview_export_index:
+    pattern:  /export/index.html
+    defaults: { _controller: OpenviewExportBundle:Export:index }
+openview_export_download:
+    pattern:  /export/download/{jobid}
+    defaults: { _controller: OpenviewExportBundle:Export:download }
+openview_export_downloadlatest:
+    pattern:  /export/downloadlatest
+    defaults: { _controller: OpenviewExportBundle:Export:downloadLatest }
+openview_export_abort:
+    pattern:  /export/abort
+    defaults: { _controller: OpenviewExportBundle:Export:abort }
+
+
+openview_export_api_v1_check:
+    pattern:  /api/v1/export/check
+    defaults: { _controller: OpenviewExportBundle:ExportAPI:check }
+    options:
+        expose: true
+openview_export_api_v1_start:
+    pattern:  /api/v1/export/start
+    defaults: { _controller: OpenviewExportBundle:ExportAPI:start }
+    options:
+        expose: true
+

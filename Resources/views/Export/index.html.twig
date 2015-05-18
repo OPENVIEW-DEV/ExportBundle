@@ -1,0 +1,127 @@
+{% extends 'OpenviewExportBundle::layout.html.twig' %}
+
+{% trans_default_domain 'OpenviewExportBundle' %}
+{#
+    Display the export index panel
+#}
+
+
+{# page title #}
+{% block title %}{{ 'index.title' | trans }} - {{ parent() }}{% endblock %}
+
+
+{% block exportcontent %}
+    <div class="page-header">
+        <h1 class="blue">{{ 'index.title' | trans }}</h1>
+    </div>
+    
+    {# current export job panel #}
+    <div class="container">
+        <div class="col-xs-12">
+            <div class="widget-box">
+                <div class="widget-header">
+                    <h4>{{ 'index.job' | trans }}</h4>
+                </div>
+                <div class="widget-body">
+                    <div class="widget-main">
+                        {# initializzation panel #}
+                        <div class="box-waiting center">
+                            <div class="space-32"></div>
+                            <i class="icon icon-spinner icon-spin bigger-300 light-grey"></i><br />
+                            <span class="light-grey">{{ 'index.initializing' | trans }}</span>
+                            <div class="space-32"></div>
+                        </div>
+                        {# start button #}
+                        <div class="box-start-process center hidden">
+                            <button class="btn btn-primary" id="btn-start-export">
+                                <i class="icon icon-gears"></i> {{ 'index.start' | trans }}
+                            </button>
+                        </div>
+                        {# running export panel #}
+                        <div class="box-process-status hidden">
+                            <h2 class="blue">{{ 'index.running' | trans }}</h2>
+                            <div class="progress progress-striped active">
+                                <div class="bar progress-bar" style="width: 0%;"></div>
+                            </div>
+                            <div>
+                                {{ 'index.status' | trans }}: <span class="property-status"></span><br />
+                                {{ 'index.itemsprocessed' | trans }}: <span class="property-exportedItems"></span>/<span class="property-totItems"></span>
+                            </div>
+                        </div>
+                        {# job finished panel #}
+                        <div class="box-process-finished hidden">
+                            <div class="alert alert-info">
+                                <h3 class="center blue">{{ 'index.finished' | trans }}</h3>
+                                <div class="center">
+                                    <a href="{{ path('openview_export_downloadlatest') }}">
+                                        <i class="icon icon-save"></i> {{ 'index.download' | trans }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            {# jobs cancel panel #}
+            <div class="box-process-abort">
+                <div class="align-right">
+                    <a class="btn btn-warning" href="{{ path('openview_export_abort') }}"
+                       title="{{ 'index.msg.cancelall' | trans }}">
+                        <i class="icon icon-ban-circle"></i> {{ 'index.cancelall' | trans }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {# jobs archive #}
+    <div class="space-32"></div>
+    <div class="container">
+        <div class="col-xs-12">
+            <h2 class="blue lighter">{{ 'index.archive' | trans }}</h2>
+        </div>
+        <div class="col-xs-12">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>{{ 'index.field.createdate' | trans }}</th>
+                        {#<th>{{ 'index.field.user' | trans }}</th>#}
+                        <th>{{ 'index.field.items' | trans }}</th>
+                        <th>{{ 'index.field.length' | trans }}</th>
+                        <th>{{ 'index.status' | trans }}</th>
+                        <th>{{ 'index.field.filename' | trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for job in jobs %}
+                        <tr>
+                            <td>{% if job['createdAt'] != '' %}{{ job['createdAt'] | date('Y-m-d H:i') }}{% endif %}</td>
+                            {#<td>{{ job['username'] }}</td>#}
+                            <td>{#{{ job['exportedItems'] }} / #}{{ job['totItems'] }}</td>
+                            <td>{{ job['length'] }}</td>
+                            <td>{{ job.statusDescription }}</td>
+                            <td>
+                                {% if job['filename'] != '' %}
+                                    <a href="{{ path('openview_export_download', {'jobid': job['id'] }) }}">
+                                        <i class="icon icon-save bigger-130"></i> {{ job['filename'] }}
+                                    </a>
+                                    ({{ job['filesize'] }}Kb)
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block exportjavascripts %}
+    {% javascripts 
+        '@OpenviewExportBundle/Resources/public/js/index.js' 
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

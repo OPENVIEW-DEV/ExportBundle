@@ -1,0 +1,20 @@
+index:
+    archive: Exports archive
+    cancelall: Cancel all
+    download: Download file
+    finished: Export done!
+    initializing: Initializing...
+    itemsprocessed: Processed items
+    job: Export job
+    running: Exporting...
+    start: Start export
+    status: Status
+    title: Data export
+    field:
+        createdate: Date
+        username: User
+        items: Items
+        length: Length
+        filename: File
+    msg:
+        cancelall: Abandon all running export jobs
