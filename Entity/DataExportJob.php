@@ -40,7 +40,7 @@ class DataExportJob {
     protected $filename;
     /**
      * Job creation datetime
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true, name="createdAt")
      */
     protected $createdAt;
     /**
