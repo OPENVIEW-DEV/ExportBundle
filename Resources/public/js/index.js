@@ -3,7 +3,7 @@
  */
 
 var exporting = false;          // if TRUE, i'm exporting. Need to find when an export job has finished
-var UPDATE_INTERVAL = 1000;     // interval between "pings"
+var UPDATE_INTERVAL = 2500;     // interval between "pings"
 
 
 /**
