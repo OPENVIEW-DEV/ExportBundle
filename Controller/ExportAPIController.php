@@ -55,7 +55,7 @@ class ExportAPIController extends Controller {
         // generate response
         $r = new Response();
         $r->setContent($s);
-        $r->headers->set('Content-Type', 'application/json');
+        //$r->headers->set('Content-Type', 'application/json');
         $r->headers->set('cache-control', 'private, max-age=0, no-cache');
 
         return $r;
@@ -91,8 +91,14 @@ class ExportAPIController extends Controller {
         // return a json with the execution status
         $serializer = $this->container->get('jms_serializer');
         $s = $serializer->serialize($result, 'json');
+        
+        // generate response
+        $r = new Response();
+        $r->setContent($s);
+        //$r->headers->set('Content-Type', 'application/json');
+        $r->headers->set('cache-control', 'private, max-age=0, no-cache');
 
-        return new Response($s);
+        return $r;
     }
     
     
