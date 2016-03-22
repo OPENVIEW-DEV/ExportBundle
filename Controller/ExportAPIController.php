@@ -58,7 +58,7 @@ class ExportAPIController extends Controller {
         $r->headers->set('Content-Type', 'application/json');
         $r->headers->set('cache-control', 'private, max-age=0, no-cache');
 
-        return new $r;
+        return $r;
     }
 
 
